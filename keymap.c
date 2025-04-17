@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+--------|Click  |  |Ctrl(F)|------+------+------+------+------+------|
      * |   CTRL |   Z  |   X  |   C  |   V  |   B  |-------|  |-------|   N  |   M  |   ,  |   .  |   /  |  -   |
      * `-----------------------------------------/        /    \      \`-----------------------------------------/'
-     *            | WIN | LAlt |SWITCH| LOWER| / Space  /       \Enter \ |NUMPAD|RAISE | RAlt | Menu |
+     *            | CMD | LAlt |SWITCH| LOWER| / Space  /       \Enter \ |NUMPAD| RAISE| CMD | RAlt |
      *            |     |      |      |      |/       /          \      \|      |      |      |      |
      *            `----------------------------------'             '------''---------------------------'
      */
@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //|------ +-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
         KC_LCTL,    KC_Z,    KC_X,   KC_C,    KC_V,    KC_B, MS_BTN1,   KC_CTRL_F, KC_N,   KC_M,  KC_COMM,  KC_DOT,  KC_SLSH, KC_MINS,
         //|------ +-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-                      KC_LGUI, KC_LALT, KC_SWITCH, KC_LOWER, KC_SPC,     KC_ENT, KC_NUMPAD, KC_RAISE, KC_RALT, KC_APP
+                      KC_LGUI, KC_LOPT, KC_SWITCH, KC_LOWER, KC_SPC,     KC_ENT, KC_NUMPAD, KC_RAISE, KC_RGUI, KC_ROPT
         //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
         ),
 
@@ -312,12 +312,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /**
  * Definición de capas y configuración de iluminación RGB
- * 
+ *
  * Este fragmento de código configura las diferentes capas del teclado y su iluminación RGB asociada.
- * 
+ *
  * Capas definidas:
  * - QWERTY: Capa base con distribución QWERTY (luz blanca)
- * - COLEMAK: Distribución alternativa Colemak (luz púrpura) 
+ * - COLEMAK: Distribución alternativa Colemak (luz púrpura)
  * - DVORAK: Distribución alternativa Dvorak (luz turquesa)
  * - LOWER: Capa de números y funciones (luz verde)
  * - RAISE: Capa de símbolos (luz azul)
@@ -328,7 +328,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * La iluminación RGB se configura por segmentos usando RGBLIGHT_LAYER_SEGMENTS
  * y se activa/desactiva según la capa activa mediante layer_state_set_user().
  *
- * Las capas superiores tienen prioridad sobre las inferiores en caso de 
+ * Las capas superiores tienen prioridad sobre las inferiores en caso de
  * superposición de la iluminación.
  */
 
@@ -394,7 +394,7 @@ void keyboard_post_init_user(void) {
 
 /**
  * Configuración y funciones para la pantalla OLED
- * 
+ *
  * Este fragmento maneja la funcionalidad de las pantallas OLED del teclado.
  * Incluye:
  * - Renderizado del logo QMK en la pantalla secundaria
@@ -402,7 +402,7 @@ void keyboard_post_init_user(void) {
  *   - Modo actual (Game/Tech)
  *   - Distribución activa (QWERTY/Colemak/Dvorak)
  *   - Capa actual (Base/Raise/Lower/Adjust/Numpad/Switch)
- * - Rotación de la pantalla principal a 270° 
+ * - Rotación de la pantalla principal a 270°
  */
 #ifdef OLED_ENABLE
 
