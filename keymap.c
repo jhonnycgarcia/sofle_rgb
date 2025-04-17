@@ -36,6 +36,52 @@ enum custom_keycodes { KC_LOWER = SAFE_RANGE, KC_RAISE, KC_ADJUST, KC_D_MUTE, KC
 #define KC_COLEMAK PDF(_COLEMAK)
 #define KC_DVORAK PDF(_DVORAK)
 
+// Definición de la macro para el Mod-Tap de Caps Lock
+// Funciona como Shift cuando se mantiene presionado
+// Funciona como Caps Lock cuando se presiona y suelta rápidamente
+// Útil para tener ambas funcionalidades en una sola tecla
+#define KC_CAPS_MT MT(MOD_LSFT, KC_CAPS)
+
+/**
+ * Definiciones para las teclas de modificación
+ * - KC_CTRL_F: Control + F
+ * - KC_CTRL_T: Control + T
+ * - KC_CTRL_N: Control + N
+ * - KC_LCTRL_UP: Left Control + Up
+ * - KC_LCTRL_DOWN: Left Control + Down
+ * - KC_LCTRL_RGHT: Left Control + Right
+ * - KC_LCTRL_LEFT: Left Control + Left
+ * - KC_LCTRL_X: Left Control + X
+ * - KC_LCTRL_C: Left Control + C
+ * - KC_LCTRL_V: Left Control + V
+ * - KC_LCTRL_G: Left Control + G
+ * - KC_LCTRL_S: Left Control + S
+ * - KC_CTRL_0: Control + 0
+ */
+#define KC_CTRL_F C(KC_F)
+#define KC_CTRL_T C(KC_T)
+#define KC_CTRL_N C(KC_N)
+#define KC_LCTRL_UP LCTL(KC_UP)
+#define KC_LCTRL_DOWN LCTL(KC_DOWN)
+#define KC_LCTRL_RGHT LCTL(KC_RGHT)
+#define KC_LCTRL_LEFT LCTL(KC_LEFT)
+#define KC_LCTRL_X LCTL(KC_X)
+#define KC_LCTRL_C LCTL(KC_C)
+#define KC_LCTRL_V LCTL(KC_V)
+#define KC_CTRL_G C(KC_G)
+#define KC_CTRL_S C(KC_S)
+#define KC_CTRL_0 C(KC_0)
+
+/**
+ * Definiciones para las capas
+ * - KC_SWITCH: Cambia a la capa SWITCH mientras se mantiene presionada
+ * - KC_ADJUST: Cambia a la capa ADJUST mientras se mantiene presionada
+ * - KC_NUMPAD: Cambia a la capa NUMPAD mientras se mantiene presionada
+ */
+#define KC_SWITCH MO(_SWITCH)
+#define KC_ADJUST MO(_ADJUST)
+#define KC_NUMPAD MO(_NUMPAD)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * QWERTY
@@ -54,15 +100,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_QWERTY] = LAYOUT(
         //,------------------------------------------------.                    ,---------------------------------------------------.
-        KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_BSPC,
+        KC_ESC,     KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,   KC_8,    KC_9,    KC_0,   KC_BSPC,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_GRV,
+        KC_TAB,     KC_Q,   KC_W,   KC_E,     KC_R,   KC_T,                       KC_Y,   KC_U,    KC_I,   KC_O,     KC_P,   KC_GRV,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        MT(MOD_LSFT, KC_CAPS), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
+        KC_CAPS_MT, KC_A,   KC_S,    KC_D,   KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,  KC_SCLN, KC_QUOT,
         //|------ +-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, MS_BTN1, C(KC_F), KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS,
+        KC_LCTL,    KC_Z,    KC_X,   KC_C,    KC_V,    KC_B, MS_BTN1,   KC_CTRL_F, KC_N,   KC_M,  KC_COMM,  KC_DOT,  KC_SLSH, KC_MINS,
         //|------ +-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_LGUI, KC_LALT, MO(_SWITCH), KC_LOWER, KC_SPC, KC_ENT, MO(_NUMPAD), KC_RAISE, KC_RALT, KC_APP
+                      KC_LGUI, KC_LALT, KC_SWITCH, KC_LOWER, KC_SPC,     KC_ENT, KC_NUMPAD, KC_RAISE, KC_RALT, KC_APP
         //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
         ),
 
@@ -83,15 +129,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_COLEMAK] = LAYOUT(
         //,------------------------------------------------.                    ,---------------------------------------------------.
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_Q, KC_W, KC_F, KC_P, KC_G, KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_TRNS,
+        KC_TRNS,   KC_Q,    KC_W,    KC_F,    KC_P,   KC_G,                       KC_J,    KC_L,   KC_U,    KC_Y,  KC_SCLN,  KC_TRNS,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_A, KC_R, KC_S, KC_T, KC_D, KC_H, KC_N, KC_E, KC_I, KC_O, KC_TRNS,
+        KC_TRNS,   KC_A,    KC_R,   KC_S,    KC_T,    KC_D,                       KC_H,   KC_N,   KC_E,    KC_I,    KC_O,    KC_TRNS,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_TRNS, KC_TRNS, KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_TRNS,
+        KC_TRNS,    KC_Z,   KC_X,     KC_C,  KC_V,    KC_B, KC_TRNS,     KC_TRNS, KC_K,   KC_M,  KC_COMM,  KC_DOT, KC_SLSH, KC_TRNS,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
         //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
         ),
 
@@ -112,15 +158,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_DVORAK] = LAYOUT(
         //,------------------------------------------------.                    ,---------------------------------------------------.
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_SLSH, KC_COMM, KC_DOT, KC_P, KC_Y, KC_F, KC_G, KC_C, KC_R, KC_L, KC_TRNS,
+        KC_TRNS,  KC_SLSH, KC_COMM, KC_DOT,   KC_P,   KC_Y,                       KC_F,    KC_G,   KC_C,    KC_R,    KC_L,   KC_TRNS,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_A, KC_O, KC_E, KC_U, KC_I, KC_D, KC_H, KC_T, KC_N, KC_S, KC_TRNS,
+        KC_TRNS,   KC_A,    KC_O,     KC_E,   KC_U,   KC_I,                       KC_D,   KC_H,    KC_T,    KC_N,    KC_S,   KC_TRNS,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_SCLN, KC_Q, KC_J, KC_K, KC_X, KC_TRNS, KC_TRNS, KC_B, KC_M, KC_W, KC_V, KC_Z, KC_TRNS,
+        KC_TRNS, KC_SCLN,   KC_Q,    KC_J,    KC_K,   KC_X, KC_TRNS,   KC_TRNS,    KC_B,   KC_M,   KC_W,   KC_V,    KC_Z,    KC_TRNS,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
         //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
         ),
 
@@ -140,15 +186,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_LOWER] = LAYOUT(
         //,------------------------------------------------.                    ,---------------------------------------------------.
-        KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_DEL,
+        KC_TRNS,   KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,   KC_DEL,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_NO, KC_NO, KC_NO, MO(_NUMPAD), KC_NO, KC_NO, KC_HOME, KC_UP, KC_END, KC_NO, KC_PSCR,
+        KC_TRNS,   KC_NO,   KC_NO,  KC_NO, KC_NUMPAD, KC_NO,                      KC_NO, KC_HOME,  KC_UP,  KC_END,   KC_NO,  KC_PSCR,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_LBRC, KC_RBRC, KC_BSLS, KC_EQL, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_INS,
+        KC_TRNS,  KC_LBRC, KC_RBRC, KC_BSLS, KC_EQL, KC_NO,                      KC_NO,  KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_INS,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, C(KC_T), C(KC_N), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_TRNS,   KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_CTRL_T, KC_CTRL_N,KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
         //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
         ),
     /* RAISE
@@ -167,15 +213,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_RAISE] = LAYOUT(
         //,------------------------------------------------.                    ,---------------------------------------------------.
-        KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_TRNS,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,                       KC_NO,   KC_NO,  KC_NO,  KC_NO,   KC_NO,   KC_NO,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_RAISE, KC_NO, KC_NO, LCTL(KC_UP), KC_NO, KC_NO, KC_NO,
+        KC_TRNS,   KC_NO,  KC_NO,   KC_NO,  KC_NO, KC_RAISE,                     KC_NO, KC_NO, KC_LCTRL_UP, KC_NO,   KC_NO,  KC_NO,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LCTL(KC_LEFT), LCTL(KC_DOWN), LCTL(KC_RGHT), KC_NO, MO(_SWITCH),
+        KC_TRNS,   KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,                 KC_NO, KC_LCTRL_LEFT, KC_LCTRL_DOWN, KC_LCTRL_RGHT, KC_NO, KC_SWITCH,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_NO, LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), KC_NO, C(KC_G), C(KC_S), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_TRNS, KC_NO, KC_LCTRL_X, KC_LCTRL_C, KC_LCTRL_V, KC_NO, KC_CTRL_G, KC_CTRL_S, KC_NO, KC_NO, KC_NO,  KC_NO,   KC_NO,  KC_NO,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
         //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
         ),
     /* ADJUST
@@ -194,15 +240,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_ADJUST] = LAYOUT(
         //,------------------------------------------------.                    ,---------------------------------------------------.
-        KC_NO, KC_NO, KC_NO, KC_BRIU, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_NO,    KC_NO,    KC_NO, KC_BRIU,  KC_NO,  KC_NO,                       KC_NO,  KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        QK_BOOT, KC_NO, KC_NO, KC_BRID, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        QK_BOOT,  KC_NO,   KC_NO,   KC_BRID, KC_NO,  KC_NO,                       KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        UG_TOGG, UG_HUEU, UG_SATU, UG_VALU, KC_NO, KC_NO, KC_NO, KC_QWERTY, KC_COLEMAK, KC_DVORAK, KC_NO, KC_NO,
+        UG_TOGG, UG_HUEU, UG_SATU, UG_VALU,  KC_NO,  KC_NO,                      KC_NO, KC_QWERTY, KC_COLEMAK, KC_DVORAK, KC_NO, KC_NO,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        UG_NEXT, UG_HUED, UG_SATD, UG_VALD, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        UG_NEXT, UG_HUED, UG_SATD, UG_VALD,  KC_NO,  KC_NO, KC_NO,       KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,    KC_NO, KC_NO,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
         //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
         ),
     /* NUMPAD
@@ -221,15 +267,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_NUMPAD] = LAYOUT(
         //,------------------------------------------------.                    ,---------------------------------------------------.
-        KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_NUM, KC_NO, KC_NO, KC_NO, KC_NO, KC_PPLS,
+        KC_F1,     KC_F2,  KC_F3,    KC_F4,   KC_F5,  KC_F6,                     KC_NUM,  KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_PPLS,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_PDOT, KC_P7, KC_P8, KC_P9, KC_NO, KC_PMNS,
+        KC_F7,     KC_F8,  KC_F9,   KC_F10,  KC_F11, KC_F12,                     KC_PDOT, KC_P7,  KC_P8,   KC_P9,   KC_NO,   KC_PMNS,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PCMM, KC_P4, KC_P5, KC_P6, KC_NO, KC_PAST,
+        KC_NO,     KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO,                      KC_PCMM, KC_P4,  KC_P5,   KC_P6,   KC_NO,   KC_PAST,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_NO, KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_NO, KC_NO, KC_NO, KC_P0, KC_P1, KC_P2, KC_P3, KC_NO, KC_PSLS,
+        KC_NO,     KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_NO,  KC_NO,      KC_NO,  KC_P0,  KC_P1,   KC_P2,   KC_P3,   KC_NO,   KC_PSLS,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
         //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
         ),
 
@@ -250,18 +296,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // layer switcher
     [_SWITCH] = LAYOUT(
         //,------------------------------------------------.                    ,---------------------------------------------------.
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_NO,     KC_NO,   KC_NO,  KC_NO,   KC_NO,  KC_NO,                      KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_NO, TO(0), TO(1), TO(2), TO(3), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_NO,    TO(0),   TO(1),   TO(2),   TO(3),  KC_NO,                      KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_NO, TO(4), TO(5), TO(6), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_NO,    TO(4),   TO(5),   TO(6),   KC_NO,  KC_NO,                      KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, C(KC_0), KC_MUTE, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO, KC_CTRL_0,  KC_MUTE, KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
+                        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO
         //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
         ),
 };
+
+
+/**
+ * Definición de capas y configuración de iluminación RGB
+ * 
+ * Este fragmento de código configura las diferentes capas del teclado y su iluminación RGB asociada.
+ * 
+ * Capas definidas:
+ * - QWERTY: Capa base con distribución QWERTY (luz blanca)
+ * - COLEMAK: Distribución alternativa Colemak (luz púrpura) 
+ * - DVORAK: Distribución alternativa Dvorak (luz turquesa)
+ * - LOWER: Capa de números y funciones (luz verde)
+ * - RAISE: Capa de símbolos (luz azul)
+ * - ADJUST: Capa de comandos y ajustes (luz rosa)
+ * - NUMPAD: Teclado numérico (luz púrpura)
+ * - SWITCH: Capa para cambiar entre distribuciones (luz amarilla)
+ *
+ * La iluminación RGB se configura por segmentos usando RGBLIGHT_LAYER_SEGMENTS
+ * y se activa/desactiva según la capa activa mediante layer_state_set_user().
+ *
+ * Las capas superiores tienen prioridad sobre las inferiores en caso de 
+ * superposición de la iluminación.
+ */
 
 #ifdef RGBLIGHT_ENABLE
 // Now define the array of layers. Later layers take precedence
@@ -272,16 +341,15 @@ const rgblight_segment_t PROGMEM layer_qwerty_lights[]  = RGBLIGHT_LAYER_SEGMENT
 const rgblight_segment_t PROGMEM layer_colemak_lights[] = RGBLIGHT_LAYER_SEGMENTS(SET_LAYER_ID(HSV_PURPLE));
 const rgblight_segment_t PROGMEM layer_dvorak_lights[]  = RGBLIGHT_LAYER_SEGMENTS(SET_LAYER_ID(HSV_TEAL));
 
-// _NUM,
+// _LOWER,
 // Light on outer column and underglow
 const rgblight_segment_t PROGMEM layer_num_lights[] = RGBLIGHT_LAYER_SEGMENTS(SET_LAYER_ID(HSV_GREEN));
 
-// _SYMBOL,
+// _RAISE,
 // Light on inner column and underglow
-const rgblight_segment_t PROGMEM layer_symbol_lights[] = RGBLIGHT_LAYER_SEGMENTS(SET_LAYER_ID(HSV_BLUE)
-);
+const rgblight_segment_t PROGMEM layer_symbol_lights[] = RGBLIGHT_LAYER_SEGMENTS(SET_LAYER_ID(HSV_BLUE));
 
-// _COMMAND,
+// _ADJUST,
 // Light on inner column and underglow
 const rgblight_segment_t PROGMEM layer_command_lights[] = RGBLIGHT_LAYER_SEGMENTS(SET_LAYER_ID(HSV_PINK));
 
@@ -322,14 +390,36 @@ void keyboard_post_init_user(void) {
 }
 #endif
 
+
+
+/**
+ * Configuración y funciones para la pantalla OLED
+ * 
+ * Este fragmento maneja la funcionalidad de las pantallas OLED del teclado.
+ * Incluye:
+ * - Renderizado del logo QMK en la pantalla secundaria
+ * - Visualización del estado actual en la pantalla principal:
+ *   - Modo actual (Game/Tech)
+ *   - Distribución activa (QWERTY/Colemak/Dvorak)
+ *   - Capa actual (Base/Raise/Lower/Adjust/Numpad/Switch)
+ * - Rotación de la pantalla principal a 270° 
+ */
 #ifdef OLED_ENABLE
 
+/**
+ * Renderiza el logo QMK en la pantalla secundaria
+ * Utiliza caracteres personalizados almacenados en PROGMEM
+ */
 static void render_logo(void) {
     static const char PROGMEM qmk_logo[] = {0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94, 0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4, 0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0x00};
 
     oled_write_P(qmk_logo, false);
 }
 
+/**
+ * Muestra el estado actual del teclado en formato compacto
+ * Incluye modo, distribución y capa activa
+ */
 static void print_status_narrow(void) {
     // Print current mode
     oled_write_P(PSTR("\n\n"), false);
@@ -380,6 +470,10 @@ static void print_status_narrow(void) {
     }
 }
 
+/**
+ * Configura la rotación inicial de las pantallas OLED
+ * La pantalla principal se rota 270° para mejor visibilidad
+ */
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (is_keyboard_master()) {
         return OLED_ROTATION_270;
@@ -387,6 +481,10 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     return rotation;
 }
 
+/**
+ * Función principal para actualizar las pantallas OLED
+ * Muestra estado en la principal y logo en la secundaria
+ */
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
         print_status_narrow();
@@ -471,33 +569,33 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             case _QWERTY:
             case _DVORAK:
                 if (clockwise) {
-                    tap_code16(KC_WH_L);
+                    tap_code16(KC_WH_L); // Acción de rueda de mouse hacia la izquierda
                 } else {
-                    tap_code16(KC_WH_R);
+                    tap_code16(KC_WH_R); // Acción de rueda de mouse hacia la derecha
                 }
                 break;
             case _RAISE:
                 if (clockwise) {
-                    tap_code16(LCTL(KC_Z));
+                    tap_code16(LCTL(KC_Z)); // Acción de la tecla Ctrl + Z
                 } else {
-                    tap_code16(LCTL(KC_Y));
+                    tap_code16(LCTL(KC_Y)); // Acción de la tecla Ctrl + Y
                 }
                 break;
             case _LOWER:
                 if (clockwise) {
-                    tap_code16(LCTL(KC_PGDN));
+                    tap_code16(LCTL(KC_PGDN)); // Acción de la tecla Ctrl + Page Down
                 } else {
-                    tap_code16(LCTL(KC_PGUP));
+                    tap_code16(LCTL(KC_PGUP)); // Acción de la tecla Ctrl + Page Up
                 }
                 break;
             case _NUMPAD:
-                if (clockwise) {
+                if (clockwise) { // Alt + Shift + Tab - Cambiar entre ventanas hacia adelante
                     register_code(KC_RALT);
                     register_code(KC_LSFT);
                     tap_code(KC_TAB);
                     unregister_code(KC_RALT);
                     unregister_code(KC_LSFT);
-                } else {
+                } else { // Alt + Tab - Cambiar entre ventanas hacia atrás
                     register_code(KC_RALT);
                     tap_code(KC_TAB);
                     unregister_code(KC_RALT);
@@ -512,16 +610,16 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             //     break;
             case _SWITCH:
                 if (clockwise) {
-                    tap_code16(C(KC_MINUS)); // Acción para avanzar página en la capa NUMPAD
+                    tap_code16(C(KC_MINUS)); // Acción de la tecla Ctrl + - (Numpad -)
                 } else {
-                    tap_code16(C(KC_EQUAL)); // Acción para retroceder página en la capa NUMPAD
+                    tap_code16(C(KC_EQUAL)); // Acción de la tecla Ctrl + = (Numpad +)
                 }
                 break;
             default:
                 if (clockwise) {
-                    tap_code(KC_WH_L);
+                    tap_code(KC_WH_L); // Acción de rueda de mouse hacia la izquierda
                 } else {
-                    tap_code(KC_WH_R);
+                    tap_code(KC_WH_R); // Acción de rueda de mouse hacia la derecha
                 }
                 break;
         }
@@ -531,9 +629,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             case _QWERTY:
             case _DVORAK:
                 if (clockwise) {
-                    tap_code(KC_WH_U);
+                    tap_code(KC_WH_U); // Acción de rueda de mouse hacia arriba
                 } else {
-                    tap_code(KC_WH_D);
+                    tap_code(KC_WH_D); // Acción de rueda de mouse hacia abajo
                 }
                 break;
             // case _RAISE:
@@ -545,9 +643,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             //     break;
             case _LOWER:
                 if (clockwise) {
-                    tap_code16(KC_PGUP);
+                    tap_code16(KC_PGUP); // Acción de la tecla Page Up
                 } else {
-                    tap_code16(KC_PGDN);
+                    tap_code16(KC_PGDN); // Acción de la tecla Page Down
                 }
                 break;
             case _NUMPAD:
@@ -566,16 +664,16 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             //     break;
             case _SWITCH:
                 if (clockwise) {
-                    tap_code16(KC_VOLD); // Acción para avanzar página en la capa NUMPAD
+                    tap_code16(KC_VOLD); // Acción para disminuir el volumen
                 } else {
-                    tap_code16(KC_VOLU); // Acción para retroceder página en la capa NUMPAD
+                    tap_code16(KC_VOLU); // Acción para aumentar el volumen
                 }
                 break;
             default:
                 if (clockwise) {
-                    tap_code(KC_WH_U);
+                    tap_code(KC_WH_U); // Acción de rueda de mouse hacia arriba
                 } else {
-                    tap_code(KC_WH_D);
+                    tap_code(KC_WH_D); // Acción de rueda de mouse hacia abajo
                 }
                 break;
         }
