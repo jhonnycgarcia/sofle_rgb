@@ -58,9 +58,9 @@ enum custom_keycodes { KC_LOWER = SAFE_RANGE, KC_RAISE, KC_ADJUST, KC_D_MUTE, KC
  * - KC_LCTRL_S: Left Control + S
  * - KC_CTRL_0: Control + 0
  */
-#define KC_CTRL_F C(KC_F)
-#define KC_CTRL_T C(KC_T)
-#define KC_CTRL_N C(KC_N)
+#define KC_CTRL_F G(KC_F)
+#define KC_CTRL_T G(KC_T)
+#define KC_CTRL_N G(KC_N)
 #define KC_LCTRL_UP LCTL(KC_UP)
 #define KC_LCTRL_DOWN LCTL(KC_DOWN)
 #define KC_LCTRL_RGHT LCTL(KC_RGHT)
@@ -68,9 +68,9 @@ enum custom_keycodes { KC_LOWER = SAFE_RANGE, KC_RAISE, KC_ADJUST, KC_D_MUTE, KC
 #define KC_LCTRL_X LGUI(KC_X)
 #define KC_LCTRL_C LGUI(KC_C)
 #define KC_LCTRL_V LGUI(KC_V)
-#define KC_CTRL_G C(KC_G)
-#define KC_CTRL_S C(KC_S)
-#define KC_CTRL_0 C(KC_0)
+#define KC_CTRL_G G(KC_G)
+#define KC_CTRL_S G(KC_S)
+#define KC_CTRL_0 G(KC_0)
 
 /**
  * Definiciones para las capas
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |   TAB  |   Q  |   W  |   E  |   R  |   T  |                  |   Y  |   U  |   I  |   O  |   P  |  `   |
      * |--------+------+------+------+------+------|                  |------+------+------+------+------+------|
      * |Cps-lsft|   A  |   S  |   D  |   F  |   G  |-------.  ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
-     * |------+------+------+------+------+--------|Click  |  |Ctrl(F)|------+------+------+------+------+------|
+     * |------+------+------+------+------+--------|Click  |  |CMD(F)|------+------+------+------+------+------|
      * |   CTRL |   Z  |   X  |   C  |   V  |   B  |-------|  |-------|   N  |   M  |   ,  |   .  |   /  |  -   |
      * `-----------------------------------------/        /    \      \`-----------------------------------------/'
      *            | CMD | LAlt |SWITCH| LOWER| / Space  /       \Enter \ |NUMPAD| RAISE| CMD | RAlt |
@@ -120,10 +120,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |   TAB  |   Q  |   W  |   F  |   P  |   G  |                     |   J  |   L  |   U  |   Y  |   ;  |  `   |
      * |--------+------+------+------+------+------|                     |------+------+------+------+------+------|
      * |Cps-lsft|   A  |   R  |   S  |   T  |   D  |-------.     ,-------|   H  |   N  |   E  |   I  |   O  |  '   |
-     * |------+------+------+------+------+--------|  Click  |   |Ctrl(F)|------+------+------+------+------+------|
+     * |------+------+------+------+------+--------|  Click  |   |CMD(F)|------+------+------+------+------+------|
      * |  LCTR  |   Z  |   X  |   C  |   V  |   B  |---------|   |--------|   K  |   M  |   ,  |   .  |   /  |  -   |
      * `-------------------------------------------/        /     \      \-----------------------------------------'
-     *            | WIN | LAlt  | SWITCH| LOWER| / Space  /        \Enter \ |NUMPAD|RAISE | RAlt | Menu |
+     *            | CMD | LAlt  | SWITCH| LOWER| / Space  /        \Enter \ |NUMPAD|RAISE | CMD  | RAlt |
      *            |     |       |       |      |/        /          \      \|      |      |      |      |
      *            `------------------------------------'           '------''---------------------------'
      */
@@ -149,10 +149,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |   TAB  |   /  |   ,  |   .  |   P  |   Y  |                     |   F  |   G  |   C  |   R  |   L  |  `   |
      * |--------+------+------+------+------+------|                     |------+------+------+------+------+------|
      * |Cps-lsft|   A  |   O  |   E  |   U  |   I  |---------.    ,------|   D  |   H  |   T  |   N  |   S  |  '   |
-     * |------+------+------+------+------+--------|  Click  |   |Ctrl(F)|------+------+------+------+------+------|
+     * |------+------+------+------+------+--------|  Click  |   |CMD(F)|------+------+------+------+------+------|
      * | LCTR   |   ;  |   Q  |   J  |   K  |   X  |---------|   |-------|   B  |   M  |   W  |   V  |   Z  |  -   |
      * `-------------------------------------------/       /     \       \-----------------------------------------'
-     *            |  WIN | LAlt | SWITCH|LOWER| / Space  /        \Enter \ |NUMPAD|RAISE | RAlt | Menu |
+     *            |  CMD | LAlt | SWITCH|LOWER| / Space  /        \Enter \ |NUMPAD|RAISE | CMD  | RAlt |
      *            |      |      |      |      |/       /           \      \|      |      |      |      |
      *            `----------------------------------'              '------''---------------------------'
      */
@@ -177,10 +177,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | trans|      |      |      |      |NUMPAD|                    |      | Home |  Up  |  End |      | Ps Cr|
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
      * | trans|  {[  |  ]}  |  |\  |   =  |      |-------.    ,-------|      | Left | Down | Right|      |Insert|
-     * |------+------+------+------+------+------|Ctrl(T)|    |Ctrl(N)|------+------+------+------+------+------|
+     * |------+------+------+------+------+------|CMD(T)|    |CMD(N)|------+------+------+------+------+------|
      * | trans|      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *            |  WIN | LAlt | SWITCH|LOWER| / Space /       \Enter \ |NUMPAD|RAISE | RAlt | Menu |
+     *            |  CMD | LAlt | SWITCH|LOWER| / Space /       \Enter \ |NUMPAD|RAISE | CMD  | RAlt |
      *            |      |      |      |      |/       /         \      \|      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
@@ -204,10 +204,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | trans|      |      |      |      |      |                    |      |      |Ctrl ^|      |      |      |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
      * | trans|      |      |      |      |      |-------.    ,-------|      |Ctrl <|Ctrl v|Ctrl >|      |SWITCH|
-     * |------+------+------+------+------+------|Ctrl(G)|    |Ctrl(S)|------+------+------+------+------+------|
-     * | trans|      |Ctrl+x|Ctrl+c|Ctrl+v|      |-------.    ,-------|      |      |      |      |      |      |
+     * |------+------+------+------+------+------|CMD(G) |    |CMD(S) |------+------+------+------+------+------|
+     * | trans|      |CMD+x |CMD+c |CMD+v |      |-------.    ,-------|      |      |      |      |      |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *            | WIN  | LAlt |SWITCH| LOWER| / Space /       \Enter \ |NUMPAD|RAISE | RAlt | Menu |
+     *            | CMD  | LAlt |SWITCH| LOWER| / Space /       \Enter \ |NUMPAD|RAISE | RAlt | Menu |
      *            |      |      |      |      |/       /         \      \|      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
@@ -234,7 +234,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|        |   |       |------+------+------+------+------+------|
      * |Nxt mod| hue v|sat v| bri v|      |      |--------|   |-------|      |      |      |      |      |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *            | WIN  | LAlt |SWITCH| LOWER| / Space /       \Enter \ |NUMPAD|RAISE | RAlt | Menu |
+     *            | CMD  | LAlt |SWITCH| LOWER| / Space /       \Enter \ |NUMPAD|RAISE | CMD  | RAlt |
      *            |      |      |      |      |/       /         \      \|      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
@@ -261,7 +261,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+-------|
      * |      |      | Prev | Play | Next |      |-------|    |-------|   0  |   1  |   2  |   3  |      |   /   |
      * `-----------------------------------------/       /    \      \-----------------------------------------'
-     *            | WIN  | LAlt |SWITCH| LOWER| / Space /       \Enter \ |NUMPAD|RAISE | RAlt | Menu |
+     *            | CMD  | LAlt |SWITCH| LOWER| / Space /       \Enter \ |NUMPAD|RAISE | CMD  | RAlt |
      *            |      |      |      |      |/       /         \      \|      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
@@ -289,7 +289,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|Ctrl(0)|    |  Mute |------+------+------+------+------+------|
      * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *            | WIN  | LAlt |SWITCH| LOWER| / Space /       \Enter \ |NUMPAD|RAISE | RAlt | Menu |
+     *            | CMD  | LAlt |SWITCH| LOWER| / Space /       \Enter \ |NUMPAD|RAISE | CMD  | RAlt |
      *            |      |      |      |      |/       /         \      \|      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
@@ -563,31 +563,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef ENCODER_ENABLE
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
+    // Encoder izquierdo
     if (index == 0) {
         switch (get_highest_layer(layer_state)) {
             case _COLEMAK:
             case _QWERTY:
             case _DVORAK:
                 if (clockwise) {
-                    tap_code16(KC_WH_L); // Acción de rueda de mouse hacia la izquierda
+                    tap_code(KC_WH_L); // Acción de rueda de mouse hacia la izquierda
                 } else {
-                    tap_code16(KC_WH_R); // Acción de rueda de mouse hacia la derecha
+                    tap_code(KC_WH_R); // Acción de rueda de mouse hacia la derecha
                 }
-                break;
+                return false;
             case _RAISE:
                 if (clockwise) {
-                    tap_code16(LCTL(KC_Z)); // Acción de la tecla Ctrl + Z
+                    tap_code16(LGUI(KC_Z)); // Acción de la tecla Ctrl + Z
                 } else {
-                    tap_code16(LCTL(KC_Y)); // Acción de la tecla Ctrl + Y
+                    tap_code16(LGUI(KC_Y)); // Acción de la tecla Ctrl + Y
                 }
-                break;
+                return false;
             case _LOWER:
                 if (clockwise) {
                     tap_code16(LCTL(KC_PGDN)); // Acción de la tecla Ctrl + Page Down
                 } else {
                     tap_code16(LCTL(KC_PGUP)); // Acción de la tecla Ctrl + Page Up
                 }
-                break;
+                return false;
             case _NUMPAD:
                 if (clockwise) { // Alt + Shift + Tab - Cambiar entre ventanas hacia adelante
                     register_code(KC_RALT);
@@ -600,29 +601,30 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code(KC_TAB);
                     unregister_code(KC_RALT);
                 }
-                break;
+                return false;
             // case _ADJUST:
             //     if (clockwise) {
             //         tap_code16(UG_SATU);
             //     } else {
             //         tap_code16(UG_SATD);
             //     }
-            //     break;
+            //     return false;
             case _SWITCH:
                 if (clockwise) {
-                    tap_code16(C(KC_MINUS)); // Acción de la tecla Ctrl + - (Numpad -)
+                    tap_code16(G(KC_MINUS)); // Acción de la tecla CMD + - (Numpad -)
                 } else {
-                    tap_code16(C(KC_EQUAL)); // Acción de la tecla Ctrl + = (Numpad +)
+                    tap_code16(G(KC_EQUAL)); // Acción de la tecla CMD + = (Numpad +)
                 }
-                break;
+                return false;
             default:
                 if (clockwise) {
                     tap_code(KC_WH_L); // Acción de rueda de mouse hacia la izquierda
                 } else {
                     tap_code(KC_WH_R); // Acción de rueda de mouse hacia la derecha
                 }
-                break;
+                return false;
         }
+    // Encoder derecho
     } else if (index == 1) {
         switch (get_highest_layer(layer_state)) {
             case _COLEMAK:
@@ -633,7 +635,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 } else {
                     tap_code(KC_WH_D); // Acción de rueda de mouse hacia abajo
                 }
-                break;
+                return false;
             // case _RAISE:
             //     if (clockwise) {
             //         tap_code16();
@@ -647,14 +649,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 } else {
                     tap_code16(KC_PGDN); // Acción de la tecla Page Down
                 }
-                break;
+                return false;
             case _NUMPAD:
                 if (clockwise) {
                     tap_code16(C(G(KC_LEFT))); // Acción para avanzar página en la capa NUMPAD
                 } else {
                     tap_code16(C(G(KC_RGHT))); // Acción para retroceder página en la capa NUMPAD
                 }
-                break;
+                return false;
             // case _ADJUST:
             //     if (clockwise) {
             //         tap_code16(UG_HUEU); // Acción para avanzar página en la capa NUMPAD
@@ -668,17 +670,17 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 } else {
                     tap_code16(KC_VOLU); // Acción para aumentar el volumen
                 }
-                break;
+                return false;
             default:
                 if (clockwise) {
                     tap_code(KC_WH_U); // Acción de rueda de mouse hacia arriba
                 } else {
                     tap_code(KC_WH_D); // Acción de rueda de mouse hacia abajo
                 }
-                break;
+                return false;
         }
     }
-    return true;
+    return false; // Siempre evitamos el comportamiento por defecto
 }
 
 #endif
