@@ -5,7 +5,32 @@
 
 Layout in [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/#/gists/76efb423a46cbbea75465cb468eef7ff) and [adjust layer](http://www.keyboard-layout-editor.com/#/gists/4bcf66f922cfd54da20ba04905d56bd4)
 
-Features:
+## Requirements
+
+To work with this keyboard configuration, you'll need:
+
+1. **QMK Firmware**
+   - QMK CLI tools installed
+   - QMK Firmware repository cloned
+   - Basic understanding of QMK configuration
+
+2. **Development Tools**
+   - AVR toolchain (for compiling and flashing)
+   - Git (for version control)
+   - Python (for QMK CLI tools)
+   - QMK Toolbox (GUI application for flashing keyboards)
+
+3. **Hardware Requirements**
+   - Sofle Keyboard (rev1)
+   - USB cables
+   - AVR programmer (for flashing)
+
+4. **Software Dependencies**
+   - avrdude (for flashing)
+   - c2json tool (for keymap conversion)
+   - keymap parser (for YAML conversion)
+
+## Features:
 
 - Symmetric modifiers (CMD/Super, Alt/Opt, Ctrl, Shift)
 - Various modes, can be switched (using Adjust layer and the selected one is stored in EEPROM.
