@@ -19,3 +19,7 @@ Features:
 - keymap parse --qmk-keymap-json keymap.json > keymap.yaml
 - qmk lint -km jhonnycgarcia -kb sofle/rev1 --strict
 - qmk compile -kb sofle/rev1 -km jhonnycgarcia
+- https://github.com/samhocevar-forks/qmk-firmware/blob/master/docs/keycodes.md
+- qmk flash -kb sofle/rev1 -km jhonnycgarcia
+- qmk flash -kb sofle/rev1 -km jhonnycgarcia -bl avrdude-split-left
+- qmk flash -kb sofle/rev1 -km jhonnycgarcia -bl avrdude-split-right
