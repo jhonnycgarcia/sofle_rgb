@@ -1,0 +1,12 @@
+{
+  "name": "sofle",
+  "version": "1.0.0",
+  "description": "Repositorio para la configuración y mapeo del teclado Sofle RGB. Este proyecto contiene la configuración del firmware, mapas de teclas y configuración de iluminación RGB para el teclado dividido Sofle RGB.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jhonny Christian Garcia Cordova",
+  "license": "MIT"
+}
