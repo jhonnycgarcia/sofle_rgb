@@ -30,21 +30,62 @@ To work with this keyboard configuration, you'll need:
    - c2json tool (for keymap conversion)
    - keymap parser (for YAML conversion)
 
-## Features:
+## About the Sofle Keyboard
 
-- Symmetric modifiers (CMD/Super, Alt/Opt, Ctrl, Shift)
-- Various modes, can be switched (using Adjust layer and the selected one is stored in EEPROM.
-- Modes for Qwerty and Colemak support
-- Modes for Mac vs Linux/Win support -> different order of modifiers and different action shortcuts on the "UPPER" layer (the red one in the image). Designed to simplify transtions when switching between operating systems often.
-- The OLED on master half shows selected mode and caps lock state and is rotated.
-- Left encoder controls volume up/down/mute. Right encoder PGUP/PGDOWN.
-- sofle/rev1
-- /Users/jhonnychristiangarciacordova/qmk_firmware/keyboards/sofle/keymaps/jhonnycgarcia
-- qmk c2json --no-cpp keymap.c -o keymap.json
-- keymap parse --qmk-keymap-json keymap.json > keymap.yaml
-- qmk lint -km jhonnycgarcia -kb sofle/rev1 --strict
-- qmk compile -kb sofle/rev1 -km jhonnycgarcia
-- https://github.com/samhocevar-forks/qmk-firmware/blob/master/docs/keycodes.md
-- qmk flash -kb sofle/rev1 -km jhonnycgarcia
-- qmk flash -kb sofle/rev1 -km jhonnycgarcia -bl avrdude-split-left
-- qmk flash -kb sofle/rev1 -km jhonnycgarcia -bl avrdude-split-right
+The Sofle Keyboard is a split keyboard with the following specifications:
+
+- **QMK Code**: `sofle/rev1`
+- **Type**: Split keyboard
+- **Layout**: 6x4+4 keys
+- **Display**: Dual OLED displays (one on each half)
+- **Encoders**: Two rotary encoders
+  - Left: Volume control (up/down/mute)
+  - Right: Page navigation (PGUP/PGDOWN)
+- **Connectivity**: USB-C
+- **Firmware**: QMK compatible
+
+The keyboard features a symmetric design with mirrored modifiers and supports multiple layout modes that can be stored in EEPROM.
+
+## QMK Commands
+
+### Parameters
+Before running any command, you'll need to set these parameters:
+- `KEYBOARD`: Your keyboard name (e.g., `sofle/rev1`)
+- `KEYMAP`: Your keymap name (e.g., `yourProfile`)
+- `KEYMAP_PATH`: Path to your keymap directory (e.g., `~/qmk_firmware/keyboards/sofle/keymaps/your_keymap`)
+
+### Compilation and Flashing
+```bash
+# Compile the firmware
+qmk compile -kb KEYBOARD -km KEYMAP
+
+# Flash the entire keyboard
+qmk flash -kb KEYBOARD -km KEYMAP
+
+# Flash left half
+qmk flash -kb KEYBOARD -km KEYMAP -bl avrdude-split-left
+
+# Flash right half
+qmk flash -kb KEYBOARD -km KEYMAP -bl avrdude-split-right
+```
+
+### Keymap Management
+```bash
+# Convert keymap to JSON format
+qmk c2json --no-cpp KEYMAP_PATH/keymap.c -o keymap.json
+
+# Parse keymap to YAML format
+keymap parse --qmk-keymap-json keymap.json > keymap.yaml
+```
+
+### Validation
+```bash
+# Lint check the keymap
+qmk lint -km KEYMAP -kb KEYBOARD --strict
+```
+
+### Keymap Location
+Your keymap should be located in the QMK firmware directory structure:
+```
+~/qmk_firmware/keyboards/KEYBOARD/keymaps/KEYMAP/
+```
