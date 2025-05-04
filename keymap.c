@@ -33,7 +33,23 @@
 
 enum sofle_layers { _DEFAULTS = 0, _QWERTY = 0, _COLEMAK, _DVORAK, _LOWER, _RAISE, _ADJUST, _NUMPAD, _SWITCH };
 
-enum custom_keycodes { KC_LOWER = SAFE_RANGE, KC_RAISE, KC_ADJUST, KC_D_MUTE, KC_ALT_TAB, KC_ALT_SHIFT_TAB };
+/*
+ * Define un tipo enumerado para identificar las diferentes capas del teclado.
+ * El uso de un enum permite:
+ * - Asignar nombres significativos a cada capa en lugar de usar números mágicos
+ * - Garantizar que los valores sean únicos y secuenciales
+ * - Facilitar el mantenimiento del código al centralizar la definición de capas
+ * - Mejorar la legibilidad al usar nombres descriptivos en el resto del código
+ * - Permitir al compilador detectar errores de digitación en nombres de capas
+ */
+enum custom_keycodes {
+    KC_LOWER = SAFE_RANGE, // Definicion de tecla para la capa inferior
+    KC_RAISE, // Definicion de tecla para la capa superior
+    KC_ADJUST, // Definicion de tecla para la capa de ajuste
+    KC_ALT_TAB, // Definicion de tecla para cambiar de ventana
+    KC_ALT_SHIFT_TAB, // Definicion de tecla para cambiar de ventana con shift
+    KC_NTIL, // Definicion de tecla para la letra ñ
+};
 
 #define KC_QWERTY PDF(_QWERTY)
 #define KC_COLEMAK PDF(_COLEMAK)
@@ -201,7 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
      * | trans|      |  "   |      |      |      |                    |   ^  |  (   |  )   |  -   |   ´  |      |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * | trans|      |  @   |  #   |  $   |  %   |-------.    ,-------|   &  |   {  |   }  |  =   |  ˜   |      |
+     * | trans|      |  @   |  #   |  $   |  %   |-------.    ,-------|   &  |   {  |   }  |  =   |  ñ   |      |
      * |------+------+------+------+------+------|CMD(G) |    |CMD(S) |------+------+------+------+------+------|
      * | trans|      |      |      |      |  ?   |-------.    ,-------|   *  |   [  |   ]  |  !   |  \   |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -215,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
         KC_TRNS,   KC_NO,S(KC_QUOT), KC_NO,  KC_NO,   KC_NO,                   S(KC_6), S(KC_9), S(KC_0), KC_MINS,  A(KC_E),   KC_NO,
         //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-        KC_TRNS,   KC_NO,  S(KC_2),S(KC_3), S(KC_4),S(KC_5),                   S(KC_7),S(KC_LBRC),S(KC_RBRC),KC_EQL, A(KC_N),   KC_NO,
+        KC_TRNS,   KC_NO,  S(KC_2),S(KC_3), S(KC_4),S(KC_5),                   S(KC_7),S(KC_LBRC),S(KC_RBRC),KC_EQL, KC_NTIL,   KC_NO,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
         KC_TRNS,  KC_NO,  KC_NO,   KC_NO,  KC_NO, S(KC_SLSH), KC_CTRL_G, KC_CTRL_S,S(KC_8),KC_LBRC,KC_RBRC,S(KC_1), KC_BSLS,   KC_NO,
         //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
@@ -525,16 +541,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
-        case KC_D_MUTE:
-            if (record->event.pressed) {
-                register_mods(mod_config(MOD_MEH));
-                register_code(KC_UP);
-            } else {
-                unregister_mods(mod_config(MOD_MEH));
-                unregister_code(KC_UP);
-            }
-            return false;
-            break;
         case KC_ALT_TAB:
             if (record->event.pressed) {
                 register_code(KC_LALT);
@@ -555,6 +561,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
+        case KC_NTIL:
+            if (record->event.pressed) {
+                register_code(KC_LOPT);
+                tap_code(KC_N);
+                unregister_code(KC_LOPT);
+                tap_code(KC_N);
+            }
+            return false;
     }
     return true;
 }
