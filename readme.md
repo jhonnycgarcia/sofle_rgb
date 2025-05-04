@@ -5,6 +5,9 @@
 
 Layout in [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/#/gists/76efb423a46cbbea75465cb468eef7ff) and [adjust layer](http://www.keyboard-layout-editor.com/#/gists/4bcf66f922cfd54da20ba04905d56bd4)
 
+https://github.com/Coko7/sofle
+https://github.com/caksoylar/keymap-drawer?tab=readme-ov-file#customization
+
 ## Requirements
 
 To work with this keyboard configuration, you'll need:
