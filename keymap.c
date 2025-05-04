@@ -612,7 +612,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 if (clockwise) {
                     tap_code16(G(KC_MINUS)); // Acción de la tecla CMD + - (Numpad -)
                 } else {
-                    tap_code16(G(KC_EQUAL)); // Acción de la tecla CMD + = (Numpad +)
+                    tap_code16(G(KC_EQUAL)); // Acción de la tecla CMD + + (Numpad +)
                 }
                 return false;
             default:
@@ -651,9 +651,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 return false;
             case _NUMPAD:
                 if (clockwise) {
-                    tap_code16(LCTL(KC_RGHT)); // CMD + Option + ->
+                    tap_code16(LALT(KC_LEFT)); // CMD + Option + <-
                 } else {
-                    tap_code16(LCTL(KC_LEFT)); // CMD + Option + <-
+                    tap_code16(LALT(KC_RGHT)); // CMD + Option + ->
                 }
                 return false;
             // case _ADJUST:
@@ -680,7 +680,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     }
     // Siempre evitamos el comportamiento por defecto
-    return true;
+    return false;
 }
 
 #endif
